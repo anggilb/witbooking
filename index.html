@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Witbooking</title>
+    <script src="scripts/jquery-1.8.1.min.js" type="text/javascript"></script>
+    <script src="scripts/jQueryRotate.2.2.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        // Declaraci—n de las variables en JavaScript
+        var anguloHorario = 0;
+        var anguloMinutero = 0;
+        var anguloSegundero = 0;
+
+
+        // Inicio de la ejecuci—n
+
+        $(document).ready(function () {
+            $("#horario").rotate(anguloHorario);
+            $("#minutero").rotate(anguloMinutero);
+            $("#segundero").rotate(anguloSegundero);
+        });
+
+
+        // Establecimiento de ‡ngulos
+
+        setInterval(function () {
+            var d = new Date;
+
+            // Horario
+            anguloHorario = ((d.getHours() * 5 + d.getMinutes() / 12) * 6);
+            $("#horario").rotate(anguloHorario);
+
+            // Minutero
+            anguloMinutero = (d.getMinutes() * 6);
+            $("#minutero").rotate(anguloMinutero);
+
+            // Segundero
+            anguloSegundero = (d.getSeconds() * 6);
+            $("#segundero").rotate(anguloSegundero);
+        }, 1000);
+    </script>
+
+    <style type="text/css">
+        
+        #horario
+        {
+            display:block;
+            position:absolute;
+        }
+        
+        #minutero
+        {
+            display:block;
+            position:absolute;
+        }
+        
+        #segundero
+        {
+            display:block;
+            position:absolute;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <img id="horario" src="images/horario.png" alt="Horario" />
+        <img id="minutero" src="images/minutero.png" alt="Minutero" />
+	<img id="segundero" src="images/segundero.png" alt="Segundero" />
+	<img id="fondo" src="images/fondo.png" alt="Fondo" />
+    </div>
+</body>
+</html>
